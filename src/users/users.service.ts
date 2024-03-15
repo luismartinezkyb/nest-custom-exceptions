@@ -14,7 +14,7 @@ export class UsersService {
   findAll() {
     return `This action returns all users`;
   }
-  @ErrorHandlerResponse()
+  // @ErrorHandlerResponse()
   findOne(id: string) {
     throw new Error('hey');
     throw new CatchException('bad errror');

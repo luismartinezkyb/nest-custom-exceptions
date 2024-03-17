@@ -16,6 +16,7 @@ export class UsersService {
   }
   // @ErrorHandlerResponse()
   findOne(id: string) {
+    return 'hola from ' + id + 'number';
     throw new Error('hey');
     throw new CatchException('bad errror');
     return `This action returns a #${id} user`;

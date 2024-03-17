@@ -5,11 +5,12 @@ import {
   HttpException,
   NotFoundException,
   HttpStatus,
+  BadRequestException,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 
-@Catch(NotFoundException)
-export class NotFoundFilter implements ExceptionFilter {
+@Catch(BadRequestException)
+export class BadRequestFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
@@ -19,7 +20,7 @@ export class NotFoundFilter implements ExceptionFilter {
     if (regex.test(request.url)) {
       return response.status(status).json({
         statusCode: status,
-        message: 'Custom Not Found Error Message', // Custom message for 404 error
+        message: 'WRONG DTOOOO', // Custom message for 404 error
         timestamp: new Date().toISOString(),
         path: request.url,
       });
@@ -27,7 +28,7 @@ export class NotFoundFilter implements ExceptionFilter {
     return response.status(HttpStatus.NOT_FOUND).json({
       statusCode: HttpStatus.NOT_FOUND,
       message: `Cannot ${request.method} ${request.url}`,
-      error: 'Not Found',
+      error: 'Not WRONG DTO',
     });
   }
 }

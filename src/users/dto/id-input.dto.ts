@@ -1,9 +1,10 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, MinLength } from "class-validator";
 
 export class IdInput {
   @IsString()
-  @IsNotEmpty({
-    message: 'Please enter a valid string',
-  })
+  @MinLength(3)
+  // @IsNotEmpty({
+  //   message: 'Please enter a valid string',
+  // })
   id: string;
 }

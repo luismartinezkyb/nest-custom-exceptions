@@ -12,6 +12,7 @@ import { NotFoundMiddleware } from './interceptors/middleware-not-found';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { NotFoundInterceptor } from './interceptors/not-found.interceptors';
 import { NotFoundFilter } from './exceptions/not-found-route.exception';
+import { BadRequestFilter } from './exceptions/bad-request.exceptiont';
 
 @Module({
   controllers: [UsersController],
@@ -19,6 +20,10 @@ import { NotFoundFilter } from './exceptions/not-found-route.exception';
     {
       provide: APP_FILTER,
       useClass: NotFoundFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: BadRequestFilter,
     },
     UsersService,
     Logger,

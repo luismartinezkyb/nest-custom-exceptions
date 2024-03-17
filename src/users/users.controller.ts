@@ -25,7 +25,7 @@ export class UsersController {
 
   @Get('/one/:id')
   findOne(@Param() data: IdInput) {
-    throw new BadRequestException('No_WAY');
+    // throw new BadRequestException('No_WAY');
     return this.usersService.findOne(data.id);
   }
 

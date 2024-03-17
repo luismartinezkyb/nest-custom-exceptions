@@ -18,8 +18,8 @@ export class PostsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.postsService.findOne(+id);
+  findOne(@Param() data: CreatePostDto) {
+    return this.postsService.findOne(+data.id);
   }
 
   @Patch(':id')
